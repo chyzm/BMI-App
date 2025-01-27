@@ -9,9 +9,6 @@ from django.contrib.auth import authenticate, login as auth_login
 from .utils import detectUser  # Import the function
 
 
-
-
-
 # Create your views here
 
 def home(request):
@@ -67,6 +64,7 @@ def login(request):
             # Check if the user is authenticated (debugging)
             if user.is_authenticated:
                 print(f'User {user.email} successfully logged in.')
+                
 
             # Redirect based on user role
             if user.is_superuser:  # Redirect superusers to the admin panel
@@ -74,7 +72,9 @@ def login(request):
                 return redirect('/admin')
             else:
                 print(f"User {user.email} redirected to calculator")
+                messages.success(request, 'You are now logged in!')
                 return redirect('calculator')
+                
         else:
             messages.error(request, 'Invalid email or password')
             return redirect('login')

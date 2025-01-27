@@ -10,6 +10,7 @@
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     
     <link href="{% static 'css/register.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     
 </head>
 <body>
@@ -22,7 +23,7 @@
 
     <div style="flex-grow: 1; display: flex; justify-content: center; align-items: center;">
         <form action="{% url 'registerUser' %}" class="form-container" method="post">
-            {% csrf_token %}  <!--Use when you use 'POST' method in form-->
+            {% csrf_token %}
             <ul class="">
                 <li>
                     <div class="row">
@@ -76,14 +77,21 @@
                                     </li>
                                     <li>
                                         <ul class="errorlist">
+                                            <!-- Loop through form fields to display field-specific errors -->
                                             {% for field in form %}
                                                 {% if field.errors %}
                                                     {% for error in field.errors %}
-                                                        <li style="color:red;">{{error}}</li>
+                                                        <li style="color:red;">{{ error }}</li>
                                                     {% endfor %}
                                                 {% endif %}
                                             {% endfor %}
-                                            <li style="color:red;">{{form.non_field_errors}}</li>
+                                            
+                                            <!-- Display non-field errors -->
+                                            {% for error in form.non_field_errors %}
+                                                <li style="color:red;">{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                        
                                         </ul>
                                         <div class="row">
                                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
@@ -100,13 +108,7 @@
                         </div>
                         <p class="text-white">Already have an account?  <a style="color: #0f0 !important;" href="{% url 'login' %}" class="mx-2 text-decoration-none ">Login</a></p>
                     </div>
-                    {% if messages %}
-                       {% for message in messages %}
-                         <div class="alert {{ message.tags }}">
-                                {{ message }}
-                         </div>
-                        {% endfor %}
-                   {% endif %}
+                    {% include 'includes/alerts.html' %}
                 </li>
             </ul>
         </form>

@@ -11,6 +11,7 @@
     <!-- Template Main CSS File -->
     <link href="{% static 'css/stylesheet_fitness_court.css' %}" rel="stylesheet"/>
     <link href="{% static 'css/calculator.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
     
 
 </head>
@@ -63,6 +64,7 @@
                <button type="submit" class="button-calc">Calculate BMI</button>
             </form>
         </div>
+        {% include 'includes/alerts.html' %}
         </div>
         <div class="row">
             <div class="col-md-12">
