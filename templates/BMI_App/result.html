@@ -19,7 +19,7 @@
   gtag('config', 'G-VVGHEKP370');
 </script>
 
-<body class="body-result">
+<body class="body-result mx-5">
     <div class="result-container">
         <h1 class="h1-result">Dear {{user.first_name}}, your BMI Result  is ready!</h1>
         <p>Age: <span class="text-danger">{{ age }}</span></p>
@@ -32,7 +32,7 @@
         <p>It is commonly used as a screening tool to categorize individuals into weight categories that may lead to health problems.</p> 
         <p>The healthy BMI range for adults is between <span class="text-danger">18.5</span> and <span class="text-danger">24.9</span></p>
         <p>Maintaining a healthy BMI reduces the risk of conditions like heart disease, diabetes, and hypertension.</p>
-         <p>However, it’s best used in conjunction with other health metrics(Blood Pessure, Sugar level, Visceral fat) for a complete picture.</p>
+         <p>However, it’s best used in conjunction with other health metrics(Blood Pressure, Sugar level, Visceral fat) for a complete picture.</p>
         <a href="{% url 'calculator' %}" class="button-result">Go Back</a>
       </div>
 

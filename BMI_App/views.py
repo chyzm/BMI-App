@@ -96,7 +96,7 @@ def result(request):
 
     # Validate parameters
     if not age or not bmi or not status:
-        return render(request, 'BMI_App/calculator.html', {'error': 'Missing required fields.'})
+        return render(request, 'BMI_App/result.html', {'error': 'Missing required fields.'})
 
     # Pass data to the result template
     context = {
